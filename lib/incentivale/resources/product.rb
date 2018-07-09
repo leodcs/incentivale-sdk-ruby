@@ -12,7 +12,7 @@ module Incentivale
       end
 
       def all
-        response = client.get(base_path, { token: client.campaign })
+        response = client.get(base_path, { token: Incentivale.configuration.campaign })
         response.success ? response.products : response.message_return
       end
     end

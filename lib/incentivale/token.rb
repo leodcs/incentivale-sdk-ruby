@@ -2,8 +2,7 @@ module Incentivale
   class Token
     attr_accessor :valid_token
 
-    def initialize(username, password)
-      @credentials = { username: username, password: password }
+    def initialize
       @valid_token = generate_new_token
     end
 
@@ -30,8 +29,6 @@ module Incentivale
 
     private
 
-    attr_accessor :credentials
-
     def token_host
       Client::HOST + '/oauth/token'
     end
@@ -39,8 +36,8 @@ module Incentivale
     def generate_new_token
       Response.new Faraday.new.post(token_host, {
           grant_type: :password,
-          username: credentials[:username],
-          password: credentials[:password]
+          username: Incentivale.configuration.username,
+          password: Incentivale.configuration.password
       })
     end
   end
