@@ -9,5 +9,9 @@ module Incentivale
     def products
       Incentivale::Resources::Product.new(client)
     end
+
+    def redemption
+      Incentivale::Resources::Redemption.new(client)
+    end
   end
 end

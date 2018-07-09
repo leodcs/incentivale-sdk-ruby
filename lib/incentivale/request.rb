@@ -1,40 +1,37 @@
 module Incentivale
   class Request
-    attr_accessor :client, :connection
+    API_ENDPOINT = '/api/v3'
+    attr_accessor :connection
 
     def initialize(client)
-      @client = client
       @connection = Faraday.new(url: Client::HOST) do |conn|
         conn.token_auth(client.auth.header)
         conn.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-        conn.adapter  Faraday.default_adapter
+        conn.request :url_encoded
+        conn.adapter Faraday.default_adapter
       end
     end
 
-    def get(url, params={})
+    def get(url, params = {})
       Response.new connection.get(request_path(url), params)
     end
 
-    def post(url, resource)
-      Response.new connection.post(request_path(url), resource.to_camel_keys)
+    def post(url, resource = {})
+      Response.new connection.post(request_path(url), resource_to_post(resource))
     end
 
-    # def put(path, resource)
-    #   options = opts.merge(body: HashKeys.convert(resource, to: :camel_case).to_json)
-    #   resp = self.class.put path, options
-    #
-    #   create_response resp
-    # end
-    #
-    # def delete(path)
-    #   resp = self.class.delete path, opts
-    #
-    #   create_response resp
-    # end
     private
 
+    def resource_to_post(resource)
+      URI.encode_www_form(serialize_resource_keys(resource))
+    end
+
+    def serialize_resource_keys(hash)
+      hash.to_snake_keys.to_camel_keys.map { |k, v| [k.to_s,v] }
+    end
+
     def request_path(url)
-      '/api/v3' + url
+      API_ENDPOINT + url
     end
   end
 end

@@ -1,18 +1,10 @@
 module Incentivale
   module Resources
-    class Product
-      attr_reader :client
-
-      def initialize(client)
-        @client = client
-      end
-
-      def base_path
-        '/products'
-      end
+    class Product < Resource
+      INDEX_ENDPOINT = '/products'
 
       def all
-        response = client.get(base_path, { token: Incentivale.configuration.campaign })
+        response = client.get(INDEX_ENDPOINT, { token: Incentivale.configuration.campaign })
         response.success ? response.products : response.message_return
       end
     end

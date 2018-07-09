@@ -1,19 +1,22 @@
-require "time"
-require "json"
-require "faraday"
-require "awrence"
-require "plissken"
+require 'time'
+require 'json'
+require 'faraday'
+require 'awrence'
+require 'plissken'
 require 'forwardable'
-require "incentivale/api"
-require "incentivale/auth"
-require "incentivale/token"
-require "incentivale/client"
-require "incentivale/request"
-require "incentivale/version"
-require "incentivale/response"
-require "recursive-open-struct"
-require "incentivale/configuration"
-require "incentivale/resources/product"
+require 'incentivale/awrence'
+require 'incentivale/api'
+require 'incentivale/auth'
+require 'incentivale/token'
+require 'incentivale/client'
+require 'incentivale/request'
+require 'incentivale/version'
+require 'incentivale/response'
+require 'recursive-open-struct'
+require 'incentivale/configuration'
+require 'incentivale/resources/resource'
+require 'incentivale/resources/product'
+require 'incentivale/resources/redemption'
 
 module Incentivale
   class << self
@@ -31,6 +34,6 @@ module Incentivale
       @api = Api.new(Client.new(token))
     end
 
-    def_delegators :@api, :products
+    def_delegators :@api, :products, :redemption
   end
 end
