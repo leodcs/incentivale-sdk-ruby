@@ -4,7 +4,7 @@ module Incentivale
       ENDPOINTS = { show: '/findtracking' }
 
       def show(cod_request)
-        client.get(ENDPOINTS[:show], { cod_request: cod_request }.merge(campaign_token))
+        client.get(ENDPOINTS[:show], { cod_request: cod_request })
       end
     end
   end

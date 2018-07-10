@@ -6,10 +6,6 @@ module Incentivale
       def initialize(client)
         @client = client
       end
-
-      def campaign_token
-        @campaign_token ||= { token: Incentivale.configuration.campaign }
-      end
     end
   end
 end

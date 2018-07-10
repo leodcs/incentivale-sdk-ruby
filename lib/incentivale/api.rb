@@ -17,5 +17,9 @@ module Incentivale
     def tracking
       Incentivale::Resources::Tracking.new(client)
     end
+
+    def egift
+      Incentivale::Resources::Egift.new(client)
+    end
   end
 end

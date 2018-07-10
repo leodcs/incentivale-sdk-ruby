@@ -1,6 +1,7 @@
 module Incentivale
   class Request
     API_ENDPOINT = '/api/v3'
+
     attr_accessor :connection
 
     def initialize(client)

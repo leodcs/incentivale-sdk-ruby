@@ -9,12 +9,12 @@ module Incentivale
       @auth = Auth.new(self)
     end
 
-    def get(path, params)
-      request.get(path, params)
+    def get(path, params={})
+      request.get path, params.merge(campaign_token)
     end
 
-    def post(path, resource)
-      request.post(path, resource)
+    def post(path, resource={})
+      request.post path, resource.merge(campaign_token)
     end
 
     def current_token
@@ -25,6 +25,10 @@ module Incentivale
 
     def request
       Request.new(self)
+    end
+
+    def campaign_token
+      @campaign_token ||= { token: Incentivale.configuration.campaign }
     end
 
     def new_token

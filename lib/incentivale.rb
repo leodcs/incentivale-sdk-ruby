@@ -4,17 +4,18 @@ require 'faraday'
 require 'awrence'
 require 'plissken'
 require 'forwardable'
-require 'incentivale/awrence'
 require 'incentivale/api'
 require 'incentivale/auth'
 require 'incentivale/token'
 require 'incentivale/client'
+require 'incentivale/awrence'
 require 'incentivale/request'
 require 'incentivale/version'
 require 'incentivale/response'
 require 'recursive-open-struct'
 require 'incentivale/configuration'
 require 'incentivale/resources/resource'
+require 'incentivale/resources/egift'
 require 'incentivale/resources/product'
 require 'incentivale/resources/tracking'
 require 'incentivale/resources/redemption'
@@ -35,6 +36,6 @@ module Incentivale
       @api = Api.new(Client.new(token))
     end
 
-    def_delegators :@api, :products, :redemption, :tracking
+    def_delegators :@api, :products, :redemption, :tracking, :egift
   end
 end
