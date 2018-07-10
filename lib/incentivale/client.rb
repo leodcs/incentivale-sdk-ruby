@@ -1,6 +1,6 @@
 module Incentivale
   class Client
-    HOST = 'http://localhost:3000' # FIXME 'https://central.incentivale.com.br'
+    HOST = 'https://central-incentivale.herokuapp.com' # FIXME 'https://central.incentivale.com.br'
 
     attr_accessor :token, :auth
 
