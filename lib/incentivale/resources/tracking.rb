@@ -1,10 +1,10 @@
 module Incentivale
   module Resources
     class Tracking < Resource
-      ENDPOINTS = { show: '/findtracking' }
+      ENDPOINTS = { find: '/findtracking' }
 
-      def show(cod_request)
-        client.get(ENDPOINTS[:show], { cod_request: cod_request })
+      def find(cod_request)
+        client.get(ENDPOINTS[:find], { cod_request: cod_request })
       end
     end
   end
