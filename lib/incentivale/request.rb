@@ -13,7 +13,7 @@ module Incentivale
     end
 
     def get(url, params = {})
-      Response.new connection.get(request_path(url), params)
+      Response.new connection.get(request_path(url), params.to_camel_keys)
     end
 
     def post(url, resource = {})

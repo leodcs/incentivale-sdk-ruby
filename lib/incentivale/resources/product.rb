@@ -1,11 +1,11 @@
 module Incentivale
   module Resources
     class Product < Resource
-      INDEX_ENDPOINT = '/products'
+      ENDPOINTS = { index: '/products' }
 
       def all
-        response = client.get(INDEX_ENDPOINT, { token: Incentivale.configuration.campaign })
-        response.success ? response.products : response.message_return
+        response = client.get(ENDPOINTS[:index], { token: Incentivale.configuration.campaign })
+        response.success ? response.products : response
       end
     end
   end

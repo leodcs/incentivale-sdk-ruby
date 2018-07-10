@@ -1,10 +1,15 @@
 module Incentivale
   module Resources
     class Redemption < Resource
-      CREATE_ENDPOINT = '/addresquest'
+      ENDPOINTS = { create: '/addresquest',
+                    exists: '/existrequest' }
 
       def create(resource)
-        client.post(CREATE_ENDPOINT, resource)
+        client.post(ENDPOINTS[:create], resource)
+      end
+
+      def exists?(cod_request)
+        client.get(ENDPOINTS[:exists], { cod_request: cod_request })
       end
     end
   end
