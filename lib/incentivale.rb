@@ -16,6 +16,7 @@ require 'recursive-open-struct'
 require 'incentivale/configuration'
 require 'incentivale/resources/resource'
 require 'incentivale/resources/product'
+require 'incentivale/resources/tracking'
 require 'incentivale/resources/redemption'
 
 module Incentivale
@@ -34,6 +35,6 @@ module Incentivale
       @api = Api.new(Client.new(token))
     end
 
-    def_delegators :@api, :products, :redemption
+    def_delegators :@api, :products, :redemption, :tracking
   end
 end

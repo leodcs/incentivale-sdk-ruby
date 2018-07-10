@@ -4,7 +4,7 @@ module Incentivale
       ENDPOINTS = { index: '/products' }
 
       def all
-        response = client.get(ENDPOINTS[:index], { token: Incentivale.configuration.campaign })
+        response = client.get(ENDPOINTS[:index], campaign_token)
         response.success ? response.products : response
       end
     end

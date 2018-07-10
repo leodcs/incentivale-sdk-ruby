@@ -13,5 +13,9 @@ module Incentivale
     def redemption
       Incentivale::Resources::Redemption.new(client)
     end
+
+    def tracking
+      Incentivale::Resources::Tracking.new(client)
+    end
   end
 end

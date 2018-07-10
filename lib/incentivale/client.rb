@@ -1,6 +1,7 @@
 module Incentivale
   class Client
     HOST = 'http://localhost:3000' # FIXME 'https://central.incentivale.com.br'
+
     attr_accessor :token, :auth
 
     def initialize(token)
