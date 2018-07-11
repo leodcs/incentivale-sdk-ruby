@@ -17,6 +17,8 @@
   - [E-gift](#e-gift)
     - [Verificar disponibilidade](#verificar-disponibilidade)
     - [Transação](#transação)
+- [Documentação](#documentação)
+- [Licença](#licença)
 
 ## Instalação
 Adicione a seguinte linha no seu Gemfile:
