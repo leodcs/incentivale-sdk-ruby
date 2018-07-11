@@ -21,16 +21,16 @@
 ## Instalação
 Adicione a seguinte linha no seu Gemfile:
 ```ruby
-gem "incentivale-sdk-ruby"
+gem 'incentivale-sdk-ruby'
 ```
 
 ## Configurando a autenticação
 Crie o arquivo `incentivale.rb` no caminho 'config/initializers' com os dados para autenticação com a sua conta:
 ```ruby
 Incentivale.configure do |config| 
-  config.username = "usuario@email.com" # Substitua pelo seu username de login
-  config.password = "senhaXXX" # Substitua pelo sua senha de login
-  config.campaign = "02a3e18d37174beb93665dd40f11d106" # Substitua pelo seu token de identificação da campanha
+  config.username = 'usuario@email.com' # Substitua pelo seu username de login
+  config.password = 'senhaXXX' # Substitua pelo sua senha de login
+  config.campaign = '02a3e18d37174beb93665dd40f11d106' # Substitua pelo seu token de identificação da campanha
 end
 ```
 
