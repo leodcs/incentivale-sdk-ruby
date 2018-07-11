@@ -6,15 +6,14 @@
 
 - [Instalação](#instalação)
 - [Configurando a autenticação](#configurando-a-autenticação)
-- [Configurando o ambiente](#configurando-o-ambiente)
 - [Exemplos de Uso](#produtos):
   - [Produtos](#produtos)
     - [Listagem](#listagem)
-  - [Resgate](#resgate)
+  - [Resgates](#resgates)
     - [Criação](#criação)
     - [Consulta](#consulta)
-  - [Tracking](#tracking)
-  - [E-gift](#egift)
+  - [Tracking do pedido](#tracking-do-pedido)
+  - [E-gift](#e-gift)
     - [Verificar disponibilidade](#verificar-disponibilidade)
     - [Transação](#transação)
 
@@ -23,6 +22,7 @@ Adicione a seguinte linha no seu Gemfile:
 ```ruby
 gem 'incentivale-sdk-ruby'
 ```
+Depois, rode o `bundle install`
 
 ## Configurando a autenticação
 Crie o arquivo `incentivale.rb` no caminho 'config/initializers' com os dados para autenticação com a sua conta:
