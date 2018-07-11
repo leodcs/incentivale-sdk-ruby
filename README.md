@@ -1,6 +1,7 @@
 # Incentivale v3 Ruby SDK
-
 > Gem para integrar com a API v3 da incentivale.com.br
+
+[![Gem Version](https://badge.fury.io/rb/incentivale-sdk-ruby.svg)](https://badge.fury.io/rb/incentivale-sdk-ruby)
 
 **Índice**
 
