@@ -1,43 +1,111 @@
-# Incentivale::Sdk::Ruby
+# Incentivale v3 Ruby SDK
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/incentivale/sdk/ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+> Gem para integrar com a API v3 da incentivale.com.br
 
-TODO: Delete this and the text above, and describe your gem
+**Índice**
 
-## Installation
+- [Instalação](#instalação)
+- [Configurando a autenticação](#configurando-a-autenticação)
+- [Configurando o ambiente](#configurando-o-ambiente)
+- [Exemplos de Uso](#produtos):
+  - [Produtos](#produtos)
+    - [Listagem](#listagem)
+  - [Resgate](#resgate)
+    - [Criação](#criação)
+    - [Consulta](#consulta)
+  - [Tracking](#tracking)
+  - [E-gift](#egift)
+    - [Verificar disponibilidade](#verificar-disponibilidade)
+    - [Transação](#transação)
 
-Add this line to your application's Gemfile:
-
+## Instalação
+Adicione a seguinte linha no seu Gemfile:
 ```ruby
-gem 'incentivale-sdk-ruby'
+gem "incentivale-sdk-ruby"
 ```
 
-And then execute:
+## Configurando a autenticação
+Crie o arquivo `incentivale.rb` no caminho 'config/initializers' com os dados para autenticação com a sua conta:
+```ruby
+Incentivale.configure do |config| 
+  config.username = "usuario@email.com" # Substitua pelo seu username de login
+  config.password = "senhaXXX" # Substitua pelo sua senha de login
+  config.campaign = "02a3e18d37174beb93665dd40f11d106" # Substitua pelo seu token de identificação da campanha
+end
+```
 
-    $ bundle
+## Produtos
+### Listagem
+Serviço resposável em identificar os produtos do catálogo, negociado anteriormente junto ao comercial da Incentivale. Todos os produtos são identificados pelo SKU.
+```ruby
+products = Incentivale.products.all
+```
 
-Or install it yourself as:
+## Resgates
+### Criação
+Serviço resposável em enviar o resgate do pedido - Cartão físico, virtual, recarga, pague contas e cartão pré-pago.
+```ruby
+redemption = Incentivale.redemption.create({ 
+    cod_request: '45214',
+    sku: 'CPVEX045V200',
+    name: 'João de souza',
+    cpf_cnpj: '045125478555',
+    email: 'joao@teste.com',
+    address: 'Rua frederico jorge',
+    address_number: '1255',
+    complement: 'Bloco A',
+    district: 'Centro',
+    city: 'Blumenau',
+    state: 'SC',
+    cep: '8978858',
+    phone_contact: '4785552544',
+    date_register: '2017-05-12',
+    amount_premium: '3',
+    price_premium: '',
+    pay_bill_barcode: '',
+    pay_bill_value: '',
+    code_card: '' 
+})
+```
 
-    $ gem install incentivale-sdk-ruby
+### Consulta
+Serviço resposável em identificar pedido do lote.
+```ruby
+cod_request = 45214 # Controle do cliente
+order = Incentivale.redemption.find(cod_request)
+```
 
-## Usage
+## Tracking do pedido
+Serviço resposável em identificar cada pedido individualmente, todos os pedidos acima de 3 (três) itens são enviados em lote. 
+Ex: Pedido XXX com 5 itens = (Lote um - 2 itens / Lote dois - 3 itens)
+```ruby
+cod_request = 45214 # Controle do cliente
+tracking = Incentivale.tracking.find(cod_request)
+```
 
-TODO: Write usage instructions here
+## E-gift
+### Verificar disponibilidade
+Serviço resposável em verificar disponibilidade do produto em estoque.
+```ruby
+sku = 'CPVMO083V50'
+amount = 2
+availability = Incentivale.egift.available?(sku, amount)
+```
+### Transação
+Serviço responsável em efetivar o E-gift.
+```ruby
+egift = Incentivale.egift.create({
+    cod_request: '4588',
+    sku: 'CPVMO083V50',
+    amount_premium: '2',
+    name: 'João da silva',
+    cpf_cnpj: '23432234234',
+    email: 'joaodasilva@gmail.com' 
+})
+```
 
-## Development
+## Documentação
+[Documentação oficial](https://central.incentivale.com.br/apiv3)
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/incentivale-sdk-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
+## Licença
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the Incentivale::Sdk::Ruby project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/incentivale-sdk-ruby/blob/master/CODE_OF_CONDUCT.md).
