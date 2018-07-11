@@ -22,7 +22,7 @@ Adicione a seguinte linha no seu Gemfile:
 ```ruby
 gem 'incentivale-sdk-ruby'
 ```
-Depois, rode o `bundle install`
+Depois, rode o `bundle install`.
 
 ## Configurando a autenticação
 Crie o arquivo `incentivale.rb` no caminho 'config/initializers' com os dados para autenticação com a sua conta:
@@ -36,14 +36,14 @@ end
 
 ## Produtos
 ### Listagem
-Serviço resposável em identificar os produtos do catálogo, negociado anteriormente junto ao comercial da Incentivale. Todos os produtos são identificados pelo SKU.
+Serviço responsável em identificar os produtos do catálogo, negociado anteriormente junto ao comercial da Incentivale. Todos os produtos são identificados pelo SKU.
 ```ruby
 products = Incentivale.products.all
 ```
 
 ## Resgates
 ### Criação
-Serviço resposável em enviar o resgate do pedido - Cartão físico, virtual, recarga, pague contas e cartão pré-pago.
+Serviço responsável em enviar o resgate do pedido - Cartão físico, virtual, recarga, pague contas e cartão pré-pago.
 ```ruby
 redemption = Incentivale.redemption.create({ 
     cod_request: '45214',
@@ -69,14 +69,14 @@ redemption = Incentivale.redemption.create({
 ```
 
 ### Consulta
-Serviço resposável em identificar pedido do lote.
+Serviço responsável em identificar pedido do lote.
 ```ruby
 cod_request = 45214 # Controle do cliente
 order = Incentivale.redemption.find(cod_request)
 ```
 
 ## Tracking do pedido
-Serviço resposável em identificar cada pedido individualmente, todos os pedidos acima de 3 (três) itens são enviados em lote. 
+Serviço responsável em identificar cada pedido individualmente, todos os pedidos acima de 3 (três) itens são enviados em lote. 
 Ex: Pedido XXX com 5 itens = (Lote um - 2 itens / Lote dois - 3 itens)
 ```ruby
 cod_request = 45214 # Controle do cliente
@@ -85,7 +85,7 @@ tracking = Incentivale.tracking.find(cod_request)
 
 ## E-gift
 ### Verificar disponibilidade
-Serviço resposável em verificar disponibilidade do produto em estoque.
+Serviço responsável em verificar disponibilidade do produto em estoque.
 ```ruby
 sku = 'CPVMO083V50'
 amount = 2
