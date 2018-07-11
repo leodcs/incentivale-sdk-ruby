@@ -6,8 +6,10 @@ module Incentivale
 
     def initialize(client)
       @connection = Faraday.new(url: Client::HOST) do |conn|
-        conn.token_auth(client.auth.header)
+        conn.headers['Authorization'] = Auth.new(client).header
         conn.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        conn.headers['Host'] = Client::HOST
+        conn.headers['Connection'] = 'Keep-Alive'
         conn.request :url_encoded
         conn.adapter Faraday.default_adapter
       end

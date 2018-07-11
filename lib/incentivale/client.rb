@@ -2,18 +2,17 @@ module Incentivale
   class Client
     HOST = 'https://central-incentivale.herokuapp.com' # FIXME 'https://central.incentivale.com.br'
 
-    attr_accessor :token, :auth
+    attr_accessor :token
 
     def initialize(token)
       @token = token
-      @auth = Auth.new(self)
     end
 
-    def get(path, params={})
+    def get(path, params = {})
       request.get path, params.merge(campaign_token)
     end
 
-    def post(path, resource={})
+    def post(path, resource = {})
       request.post path, resource.merge(campaign_token)
     end
 
