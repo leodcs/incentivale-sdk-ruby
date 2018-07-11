@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.description   = 'Gem to wrap incentivale.com.br API v3'
   spec.summary       = 'Gem to wrap incentivale.com.br API v3'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/leodcs/incentivale-sdk-ruby'
   spec.license       = 'MIT'
 
   # Specify which files should be added to the gem when it is released.
