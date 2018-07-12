@@ -37,9 +37,5 @@ module Incentivale
     end
 
     def_delegators :@api, :products, :redemption, :tracking, :egift
-
   end
-
 end
-
-require 'incentivale/railtie' if defined?(Rails)
