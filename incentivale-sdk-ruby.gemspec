@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'incentivale/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'incentivale-sdk-ruby'
+  spec.name          = 'incentivale'
   spec.version       = Incentivale::VERSION
   spec.authors       = ['Leonardo Santos']
   spec.email         = ['aleotory@gmail.com']
@@ -13,10 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/leodcs/incentivale-sdk-ruby'
   spec.license       = 'MIT'
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
   spec.files = Dir['lib/**/*.rb']
-  spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
