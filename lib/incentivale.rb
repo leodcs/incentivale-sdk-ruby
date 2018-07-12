@@ -42,4 +42,4 @@ module Incentivale
 
 end
 
-require 'incentivale' if defined?(Rails)
+require 'incentivale/railtie' if defined?(Rails)
