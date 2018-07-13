@@ -23,7 +23,7 @@
 ## Instalação
 Adicione a seguinte linha no seu Gemfile:
 ```ruby
-gem 'incentivale-sdk-ruby'
+gem 'incentivale-sdk-ruby', require: 'incentivale'
 ```
 Depois, rode o `bundle install`.
 
