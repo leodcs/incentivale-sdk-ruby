@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'incentivale/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'incentivale'
+  spec.name          = 'incentivale-sdk-ruby'
   spec.version       = Incentivale::VERSION
   spec.authors       = ['Leonardo Santos']
   spec.email         = ['aleotory@gmail.com']
