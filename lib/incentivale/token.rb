@@ -24,7 +24,7 @@ module Incentivale
     end
 
     def expired?
-      (Time.now.utc - expires_at) >= 3600
+      (Time.now.utc - expires_at) >= 0
     end
 
     private
