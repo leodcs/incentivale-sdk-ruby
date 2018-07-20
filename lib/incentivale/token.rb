@@ -30,15 +30,22 @@ module Incentivale
     private
 
     def token_host
-      Client::HOST + '/oauth/token'
+      Client.host + '/oauth/token'
+    end
+
+    def token_grants
+      { username: Incentivale.configuration.username,
+        password: Incentivale.configuration.password,
+        grant_type: :password }
     end
 
     def generate_new_token
-      Response.new Faraday.new.post(token_host, {
-          grant_type: :password,
-          username: Incentivale.configuration.username,
-          password: Incentivale.configuration.password
-      })
+      connection = Faraday.new(url: token_host)
+      response = connection.post do |request|
+        request.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+        request.body = URI.encode_www_form(token_grants)
+      end
+      Response.new(response)
     end
   end
 end

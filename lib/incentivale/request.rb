@@ -5,11 +5,10 @@ module Incentivale
     attr_accessor :connection
 
     def initialize(client)
-      @connection = Faraday.new(url: Client::HOST) do |builder|
+      @connection = Faraday.new(url: Client.host) do |builder|
         builder.headers['Authorization'] = Auth.new(client).header
         builder.headers['Content-Type'] = 'application/x-www-form-urlencoded'
         builder.headers['Connection'] = 'Keep-Alive'
-        builder.request :url_encoded
         builder.adapter Faraday.default_adapter
       end
     end

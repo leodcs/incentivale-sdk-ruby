@@ -1,11 +1,20 @@
 module Incentivale
   class Client
-    HOST = 'https://central-incentivale.herokuapp.com' # FIXME 'https://central.incentivale.com.br'
-
     attr_accessor :token
 
     def initialize(token)
       @token = token
+    end
+
+    def self.host
+      case Incentivale.configuration.environment
+      when :sandbox
+        'https://homologacentral.incentivale.com.br'
+      when :production
+        'https://central.incentivale.com.br'
+      else
+        raise StandardError, 'invalid environment provided'
+      end
     end
 
     def get(path, params = {})
