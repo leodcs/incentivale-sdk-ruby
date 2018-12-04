@@ -109,7 +109,7 @@ egift = Incentivale.egift.create({
 ```
 
 ## Documentação
-[Documentação oficial](https://central.incentivale.com.br/apiv3)
+[Documentação oficial](https://central.incentivale.com.br/api/v3)
 
 ## Licença
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
