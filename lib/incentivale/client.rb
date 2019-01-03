@@ -11,7 +11,7 @@ module Incentivale
       when :sandbox
         'https://homologacentral.incentivale.com.br'
       when :production
-        'https://central.incentivale.com.br'
+        'https://api-prd-01.incentivale.com.br'
       else
         raise StandardError, 'invalid environment provided'
       end
