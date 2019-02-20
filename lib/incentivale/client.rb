@@ -9,7 +9,7 @@ module Incentivale
     def self.host
       case Incentivale.configuration.environment
       when :sandbox
-        'https://homologacentral.incentivale.com.br'
+        'https://api-prd-01-hom.incentivale.com.br'
       when :production
         'https://api-prd-01.incentivale.com.br'
       else
