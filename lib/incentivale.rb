@@ -36,6 +36,6 @@ module Incentivale
       @api = Api.new(Client.new(token))
     end
 
-    def_delegators :@api, :products, :redemption, :tracking, :egift
+    def_delegators :@api, :products, :redemption, :tracking, :egift, :available?
   end
 end
